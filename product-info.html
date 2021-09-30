@@ -37,6 +37,12 @@
           <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-top: inherit; padding-bottom: inherit;">
             <span class="sr-only">Toggle Dropdown</span>
           </button>
+          <!-- Creo un boton par despasarce y mostar ver carrito ver perfil y cerrar sesion-->
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <button class="dropdown-item" type="button"><a href="cart.html">Ver mi carrito</a></button>
+            <button class="dropdown-item" type="button"><a href="my-profile.html">Mi perfil</a></button>
+            <button class="dropdown-item" type="button"><a href="index.html">Cerrar sesión</a></button>
+          </div>
           </div>
       <div id="barraDeArriba"></div>
     </div>
@@ -45,9 +51,13 @@
 
   <!--Creo una caja que llama a la imagen del producto, el contenido del json y la caja de comentarios -->
   <main role="main" class="pb-5 bg-light">
+    
     <div class="verProducto container p-5">
+      
       <div id="contenido"></div>
+      
       <hr>
+      
       <div id="imagenes" class="img"></div>
       <hr>
       <div id="comentarios">
@@ -92,6 +102,10 @@
       <!--Creo un boton que me lleve a productos nuevamente-->
       <a class="btn btn-dark" href="products.html">Atras</a>
     </div>
+
+    <h5 style="text-align: center;">Productos Relacionados </h5>
+    <br>
+    <dd  id="rProducts"></dd>
     
 
     </div>
@@ -120,3 +134,5 @@
 </body>
 
 </html>
+
+

@@ -10,14 +10,14 @@ function showProduct(array, arrayComments) {
     let info = "";
     let imgs = "";
     let comments = "";
-// en el let info llamo la info del json de Products info
+    // en el let info llamo la info del json de Products info
     info += `<h2>${product.name}</h2>
             <hr>
             <text>${product.description}</text><br><br>
             Precio: <strong>${product.cost} ${product.currency}</strong><br>
             Vendidos: <strong>${product.soldCount}</strong><br>
             Categoria: <strong>${product.category}</strong><br>`;
-// creo una carrusel para tener una galeria de fotos de el vehiculo
+    // creo una carrusel para tener una galeria de fotos de el vehiculo
     imgs += `<div id="carouselFade" class="carousel slide carousel-fade w-75 ml-auto mr-auto img-thumbnail" data-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active" data-interval="5000">
@@ -46,8 +46,55 @@ function showProduct(array, arrayComments) {
             </a>
           </div>`;
 
+
+
+    //ver
+    function showRelatedProducts(array) {
+        let htmlContentToAppend = "";
+        let product = array;
+        htmlContentToAppend += `
+                    
+                        <div class="row row-cols-4">
+                            <div class="col-3 mr-4">
+                                <div class="card" style="width: 25rem;">
+                                    <a href="product-info.html" class="list-group-item list-group-item-action">
+                                        <img src="` + product[1].imgSrc + `" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h3 class="card-title" style="font-weight:bold;">` + product[1].cost + ` ` + product[1].currency + `</h3>
+                                            <h5 class="card-title">` + product[1].name + `</h5>
+                                            <p class="card-text">` + product[1].description + `</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="col-3 mr-4">
+                                <div class="card" style="width: 23rem;">
+                                    <a href="product-info.html" class="list-group-item list-group-item-action">
+                                        <img src="` + product[3].imgSrc + `" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h3 class="card-title" style="font-weight:bold;">` + product[3].cost + ` ` + product[3].currency + `</h3>
+                                            <h5 class="card-title">` + product[3].name + `</h5>
+                                            <p class="card-text">` + product[3].description + `</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                `
+        document.getElementById("rProducts").innerHTML = htmlContentToAppend;
+
+    }
+    //ver 
+    getJSONData(PRODUCTS_URL).then(function (resultObj) {
+        if (resultObj.status === "ok") {
+            products = resultObj.data;
+            showRelatedProducts(products);
+        };
+    });
+
     let productScore = 0;
-// maximo y minimo de estrellas
+    // maximo y minimo de estrellas
     for (let comment in arrayComments) {
         productScore += parseFloat(arrayComments[comment].score);
     }
@@ -68,7 +115,7 @@ function showProduct(array, arrayComments) {
             puntos += '<span class="far fa-star"></span>';
         }
     }
-// llamo info de comentarios info
+    // llamo info de comentarios info
     comments += `<div class="productAverageScore">
                     <h3>Opiniones sobre el producto</h3>
                     <div class="scoreStarAndPromedio">
@@ -84,12 +131,14 @@ function showProduct(array, arrayComments) {
                     </div>
                 </div>
                 <br>
-                `;
+                `
+
+        ;
 
     for (let comment in arrayComments) {
         let maxEstrellas = 5;
         let puntos = "";
-// le doy estilo a las estrellas
+        // le doy estilo a las estrellas
         for (let i = 1; i <= maxEstrellas; i++) {
             if (i <= arrayComments[comment].score) {
                 puntos += '<span class="fa fa-star checked"></span>';
@@ -103,11 +152,14 @@ function showProduct(array, arrayComments) {
                     <p>${arrayComments[comment].description}</p>
                     <small>${arrayComments[comment].dateTime}</small><br><br>`;
     }
-// llamo las variables anteriormente creadas
+    // llamo las variables anteriormente creadas
     document.getElementById("contenido").innerHTML = info;
     document.getElementById("imagenes").innerHTML = imgs;
     document.getElementById("comentarios").innerHTML = comments;
+    document.getElementById("relatedProducts");
 }
+
+
 
 // llamo el json de la informacion de los productos
 
@@ -117,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             product = resultObj.data;
         }
     })
-     //llamo el json de los comentarios ya creados
+    //llamo el json de los comentarios ya creados
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
             commentsArray = resultObj.data;
@@ -125,6 +177,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
             showProduct(product, commentsArray);
         }
     })
+
+
+
     //llamo el id que tengo en products info.html que es el boton para enviar comentarios
     document.getElementById("enviarNuevoComentario").addEventListener("click", function (e) {
         let now = new Date();
@@ -148,7 +203,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         if (resultObj.status === "ok") {
             productsArray = resultObj.data;
 
-           
+
         }
     })
 });
