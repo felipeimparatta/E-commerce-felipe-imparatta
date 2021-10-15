@@ -25,13 +25,7 @@
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
       
-      <!--Creamos un formulario de buscador en todos los html-->
-      <div>
-        <input type="text" class="form-control" name="buscador" placeholder="Buscar..." id="formulario"
-          autocomplete="off">
-        <div id="resultado" class="btn-dark" aria-labelledby="dropdownMenuLink" style="position: absolute;">
-        </div>
-      </div>
+      
       <div class="btn-group">
         <button type="button" class="btn btn-success" style="padding-top: inherit; padding-bottom: inherit;" id="loginUser"></button>
           <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-top: inherit; padding-bottom: inherit;">
@@ -41,7 +35,7 @@
           <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
             <button class="dropdown-item" type="button"><a href="cart.html">Ver mi carrito</a></button>
             <button class="dropdown-item" type="button"><a href="my-profile.html">Mi perfil</a></button>
-            <button class="dropdown-item" type="button"><a href="index.html">Cerrar sesión</a></button>
+            <a class="dropdown-item" href="#" id="cerrarboton" onclick="return LogOut()">Cerrar sesión</a>
           </div>
           </div>
       <div id="barraDeArriba"></div>
@@ -53,7 +47,9 @@
   <main role="main" class="pb-5 bg-light">
     
     <div class="verProducto container p-5">
-      
+      <div><p class="small alert-warning py-3"><strong>Nota: </strong>cualquiera sea el producto
+        seleccionado previamente, siempre se visualizarán productos relacionados e imágenes ilustrativas del presente:<strong id="nota"></strong>.</p>
+      </div>
       <div id="contenido"></div>
       
       <hr>
@@ -131,6 +127,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
+  <script src="js/login.js"  ></script>
 </body>
 
 </html>

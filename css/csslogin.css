@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background: linear-gradient(to right, #b92b27, #1565c0)
+    background:rgba(0, 0, 0, 0.26) ;
 }
 
 .card {
@@ -74,6 +74,11 @@ body {
     text-decoration: underline
 }
 
-
-
+.boton {
+        border: 2px solid #2ecc71;
+    background-color: transparent;
+    border-radius: 24px;
+    padding: 14px 40px;
+    color: white;
+}
 

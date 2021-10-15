@@ -26,10 +26,12 @@
       <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
        <!--Creamos un formulario de buscador en todos los html-->
        <div>
-        <input type="text" class="form-control" name="buscador" placeholder="Buscar..." id="formulario"
-          autocomplete="off">
-        <div id="resultado" class="btn-dark" aria-labelledby="dropdownMenuLink" style="position: absolute;">
+
+        <div class="buscar"><input type="text" class="form-control" id="myInput" onkeyup="buscar()" placeholder="Buscar Productos" >
         </div>
+
+        
+
       </div>
       <div class="btn-group">
         <button type="button" class="btn btn-success" style="padding-top: inherit; padding-bottom: inherit;" id="loginUser"></button>
@@ -39,7 +41,7 @@
           <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
             <button class="dropdown-item" type="button"><a href="cart.html">Ver mi carrito</a></button>
             <button class="dropdown-item" type="button"><a href="my-profile.html">Mi perfil</a></button>
-            <button class="dropdown-item" type="button"><a href="index.html">Cerrar sesión</a></button>
+            <a class="dropdown-item" href="#" id="cerrarboton" onclick="return LogOut()">Cerrar sesión</a>
           </div>
           </div>
       <div id="barraDeArriba"></div>
@@ -55,6 +57,7 @@
       <p class="lead">Verás aquí todas los productos del sitio.</p>
     </div>
     </div>
+    
 
     <!--en el siguiente codigo creo una div que crea unos botones para luego por js hacerle que ordene de men a may y x cantidad-->
     <div class="container">
@@ -70,12 +73,18 @@
             </label>
             <label class="btn btn-light" id="sortByCount">
               <input type="radio" name="options" autocomplete="off"> <i class="fas fa-align-left"> Relevancia</i>
+            
             </label>
+            
           </div>
+          
         </div>
+        
       </div>
+      
 
       <!-- creo otro div para que haya otro tipo de filtrado que es por minimo y maximo precio-->
+      
       <div class="row justify-content-end">
         <div class="col-md-6"></div>
         <div class="col-md-6 col-sm-12 mb-1 container">
@@ -130,6 +139,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/products.js"></script>
+  <script src="js/login.js"  ></script>
 
 
 </body>

@@ -149,4 +149,10 @@ color: orange;
 }
 
 
+.mdi {
+  font-size: 50px
+}
 
+.padding {
+  padding: 8rem !important
+}

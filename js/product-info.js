@@ -48,7 +48,7 @@ function showProduct(array, arrayComments) {
 
 
 
-    //ver
+    //creo una funcion que me muestra los 2 productos relacionados 
     function showRelatedProducts(array) {
         let htmlContentToAppend = "";
         let product = array;
@@ -85,7 +85,7 @@ function showProduct(array, arrayComments) {
         document.getElementById("rProducts").innerHTML = htmlContentToAppend;
 
     }
-    //ver 
+    //llamo el json de los productos para mostrar su info 
     getJSONData(PRODUCTS_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
             products = resultObj.data;
@@ -216,3 +216,4 @@ function getRating() {
         }
     }
 }
+

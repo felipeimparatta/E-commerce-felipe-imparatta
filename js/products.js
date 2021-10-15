@@ -147,3 +147,23 @@ document.addEventListener("DOMContentLoaded", function (e) {
         showProductsList();
     });
 });
+
+function buscar() {
+    var input, filter, links, h4, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    
+    links = document.getElementsByTagName("h4");
+    for (i = 0; i < links.length; i++) {
+        h4 = links[i];
+        txtValue = h4.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            h4.parentNode.parentNode.parentNode.style.display = "";
+        
+            
+        }else{
+            h4.parentNode.parentNode.parentNode.style.display = "none";
+
+        }
+    }
+}
