@@ -17,28 +17,46 @@
 
 <body>
   <!--le hago un id para despues llamarlo de js-->
-  <nav class="site-header sticky-top py-1 bg-dark" >
-    <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2 d-none d-md-inline-block" href="Principal.html">Inicio</a>
-      <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-      <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-      <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-      
-      
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" style="background-color: black;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="Principal.html">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="categories.html">Categorías</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="products.html">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="sell.html">Vender</a>
+        </li>
+      </ul>
+    </div>
+
+    <div>
       <div class="btn-group">
-        <button type="button" class="btn btn-success" style="padding-top: inherit; padding-bottom: inherit;" id="loginUser"></button>
-          <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-top: inherit; padding-bottom: inherit;">
-            <span class="sr-only">Toggle Dropdown</span>
-          </button>
-          <!-- Creo un boton par despasarce y mostar ver carrito ver perfil y cerrar sesion-->
-          <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-            <button class="dropdown-item" type="button"><a href="cart.html">Ver mi carrito</a></button>
-            <button class="dropdown-item" type="button"><a href="my-profile.html">Mi perfil</a></button>
-            <a class="dropdown-item" href="#" id="cerrarboton" onclick="return LogOut()">Cerrar sesión</a>
-          </div>
-          </div>
+        <button type="button" class="btn btn-success" style="padding-top: inherit; padding-bottom: inherit;"
+          id="loginUser"></button>
+        <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split mr-5" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false" style="padding-top: inherit; padding-bottom: inherit; ">
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <button class="dropdown-item" type="button"><a href="cart.html">Ver mi carrito</a></button>
+          <button class="dropdown-item" type="button"><a href="my-profile.html">Mi perfil</a></button>
+          <button class="dropdown-item" type="button" onclick="cerrarSesion()"><a href="index.html">Cerrar sesión</a></button>
+        </div>
+      </div>
       <div id="barraDeArriba"></div>
+    </div>
+    </div>
+    </div>
     </div>
 
   </nav>

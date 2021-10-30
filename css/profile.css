@@ -1,0 +1,25 @@
+body {
+    background-color: #f5f5f5;
+}
+
+.container {
+    background-color: white;
+}
+
+h2 {
+    padding-bottom: 20px;
+}
+
+#imageAlert {
+    display: none;
+}
+
+#saveAlert {
+    color: green;
+    display: none;
+}
+
+#mostrarFoto {
+    display: none;
+    height: 200px;
+}

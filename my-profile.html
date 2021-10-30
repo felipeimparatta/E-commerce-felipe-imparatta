@@ -12,90 +12,136 @@
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
 
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/profile.css">
 </head>
 
-<body>
-  <nav class="site-header sticky-top py-1 bg-dark">
-    <div class="container d-flex flex-column flex-md-row justify-content-between" >
-      <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
-      <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-      <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-      <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-      <div>
-        
-        <div class="btn-group">
-          <button type="button" class="btn btn-success" style="padding-top: inherit; padding-bottom: inherit;" id="loginUser"></button>
-            <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-top: inherit; padding-bottom: inherit;">
-              <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <button class="dropdown-item" type="button"><a href="cart.html">Ver mi carrito</a></button>
-              <button class="dropdown-item" type="button"><a href="my-profile.html">Mi perfil</a></button>
-              <a class="dropdown-item" href="#" id="cerrarboton" onclick="return LogOut()">Cerrar sesión</a>
-            </div>
-            </div>
-        <div id="barraDeArriba"></div>
-      </div>
-      </div>
-    </div>
-  </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 6 (Fecha de entrega: 31/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
-  </div>
-  <footer class="text-muted bg-light">
-    <div class="container">
-      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
-    </div>
-  </footer>
-  <div class="alert fade alert-success" role="alert" id="alertResult">
-    <span id="resultSpan"></span>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
+<body style="background-color: rgba(31, 22, 22, 0.363)">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" style="background-color: black;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
-  </div>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="Principal.html">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="categories.html">Categorías</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="products.html">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="sell.html">Vender</a>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="btn-group">
+        <button type="button" class="btn btn-success" style="padding-top: inherit; padding-bottom: inherit;"
+          id="loginUser"></button>
+        <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split mr-5" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false" style="padding-top: inherit; padding-bottom: inherit; ">
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <button class="dropdown-item" type="button"><a href="cart.html">Ver mi carrito</a></button>
+          <button class="dropdown-item" type="button"><a href="my-profile.html">Mi perfil</a></button>
+          <button class="dropdown-item" type="button" onclick="cerrarSesion()"><a href="index.html">Cerrar sesión</a></button>
+        </div>
+      </div>
+      <div id="barraDeArriba"></div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+  </nav>
+
+  <!--Creo "formulario para llenar datos, cada uno tiene su id para ser llamado a travez de un getelementoById y guardar datos "-->
+  <div class="container border mt-4">
+    <div class="text-center my-4">
+      <h2 >Mi perfil</h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 mb-4">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="ariaNombre">Nombre</span>
+          </div>
+          <input id="userNombre" type="text" class="form-control" placeholder="Nombre" aria-label="ariaNombre" aria-describedby="ariaNombre">
+        </div>
+      </div>
+      <div class="col-sm-6 mb-4">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="ariaApellido">Apellido</span>
+          </div>
+          <input id="userApellido" type="text" class="form-control" placeholder="Apellido" aria-label="ariaApellido" aria-describedby="ariaApellido">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 mb-4">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="ariaEdad">Edad</span>
+          </div>
+          <input id="userEdad" type="number" class="form-control" placeholder="Edad" aria-label="ariaEdad" aria-describedby="ariaEdad">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 mb-4">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="ariaEmail">Email</span>
+          </div>
+          <input id="userEmail" type="text" class="form-control" placeholder="Email" aria-label="ariaEmail" aria-describedby="ariaEmail">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 mb-4">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="ariaTelefono">Teléfono</span>
+          </div>
+          <input id="userTelefono" type="text" class="form-control" placeholder="Teléfono" aria-label="ariaTelefono" aria-describedby="ariaTelefono">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 mb-4">
+        <h5>Foto de perfil</h5>
+        <div class="custom-file mt-2">
+          <input type="file" class="custom-file-input" id="fotoPerfil">
+          <label class="custom-file-label" for="fotoPerfil" data-browse="Buscar imagen">Subir una imagen</label>
+        </div>
+        <div class="my-4 font-weight-bold" id="imageAlert"></div>
+        <img class="rounded mt-4" src="" alt="fotoPerfil" id="mostrarFoto">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 my-4">
+        <button type="button" class="btn btn-dark" onclick="saveData()">Guardar cambios</button>
+      </div>
+      <div class="col-sm-6 my-4 text-center font-weight-bold" id="saveAlert"></div>
     </div>
   </div>
+
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/dropzone.js"></script>
   <script src="js/init.js"></script>
   <script src="js/my-profile.js"></script>
-  <script src="js/login.js"  ></script>
+  <script src="js/login.js"></script>
 </body>
 
 </html>
-
-
-

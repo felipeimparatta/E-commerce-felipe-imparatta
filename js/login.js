@@ -13,15 +13,13 @@ function guardarDatosUsuarios(){
         return true;
     }
 }
-
-function logOut(){ //
-    if(usuLogin != ''){
-  localStorage.removeItem('username');
-  
-  location.href = ('index.html'); 
+// Función que borra el usuario ingresado
+function cerrarSesion(){
+    sessionStorage.removeItem('username');
   }
   
-  }
+  // Nombre de usuario en el botón desplegable
+  document.getElementById("userMenu").innerHTML = sessionStorage.getItem('username')
 
 
 

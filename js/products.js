@@ -55,23 +55,17 @@ function showProductsList() {
 // <a href="product-info.html" class="list-group-item list-group-item-action"> Sirve para cuando yo toque un box de cualquier producto que este dentro del json se me redirija al products info
             htmlContentToAppend += `
             
-            
-            <a href="product-info.html" class="list-group-item list-group-item-action">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="` + products.imgSrc + `" alt="` + products.description + `" class="img-thumbnail">
+            <div class="col-md-4" style="display: inline-block;">    
+            <a href= "product-info.html" class="card mb-4 shadow-sm custom-card">
+                <img class="bd-placeholder-img card-img-top" src="` + products.imgSrc + `">
+                <h3 class="ml-3 mr-3 mt-3 mb-0">` + products.name + `  </h3>    
+                <div class="card-body pt-1">
+                <small class="text-muted">` + products.soldCount + ` cantidad de vendidos </small>
+                <p class="card-text mt-3 mb-2"> ` + products.description + `</p>
+                <small class="text-muted">` + products.currency + ` ` + products.cost + ` </small>
                 </div>
-                        <div class="col">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h4 class="mb-1">`+ products.name + `</h4>
-                                <small class="text-muted">` + products.soldCount + ` artículos</small>
-                            </div>
-                            <p>` + products.description + `</p>
-                            <p class="text-muted">`+ products.currency + " " + products.cost + `  </p>
-                        </div>
-                    </div>
-                </div>
-                `
+            </a>
+        </div>`
             }
 
                 document.getElementById("products").innerHTML = htmlContentToAppend;
@@ -167,3 +161,8 @@ function buscar() {
         }
     }
 }
+
+
+
+
+
