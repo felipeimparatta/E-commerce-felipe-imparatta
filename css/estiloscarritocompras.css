@@ -152,7 +152,8 @@ input:focus {
 
 .cart-totals table tr td.free-shipping {
     font-size: 14px;
-    color: #6f6f6f;
+    color: #d84a12;
+
 }
 
 .cart-totals table tr.total-row td {

@@ -17,6 +17,7 @@ if (datosParse) {
     document.getElementById("userEmail").value = datosParse.Email;
     document.getElementById("userTelefono").value = datosParse.Telefono;
 }
+
  //alertas de cargando foto y datos guardados
 var mensaje = document.getElementById("saveAlert");
 var mensajeImagen = document.getElementById("imageAlert");

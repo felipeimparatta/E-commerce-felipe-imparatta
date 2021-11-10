@@ -52,7 +52,8 @@
         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
           <button class="dropdown-item" type="button"><a href="cart.html">Ver mi carrito</a></button>
           <button class="dropdown-item" type="button"><a href="my-profile.html">Mi perfil</a></button>
-          <button class="dropdown-item" type="button" onclick="cerrarSesion()"><a href="index.html">Cerrar sesión</a></button>
+          <button class="dropdown-item" type="button" onclick="cerrarSesion()"><a href="index.html">Cerrar
+              sesión</a></button>
         </div>
       </div>
       <div id="barraDeArriba"></div>
@@ -64,124 +65,257 @@
   </nav>
   <!-- Div donde creo la tabla para mostrar los productos del carrito y sus descripciones precios etc-->
 
+<!-- Creo un contenedor donde van a estar los articulos del carrito -->
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
         <h2 class="main-heading" id="micarrito">Mi Carrito</h2>
-        <br>
         <div class="table-cart">
           <table id="tabla">
             <thead>
-              <tr id="subcarrito">
+              <tr>
                 <th></th>
                 <th>Producto</th>
                 <th>Precio x Unidad</th>
                 <th>Cantidad</th>
-                <th>SubTotal $</th>
+                <th>SubTotal</th>
               </tr>
             </thead>
             <tbody id="listProduct"></tbody>
-            
           </table>
-          <div>
-            <div style="text-align: center" > <i class="mdi mdi-forum"></i> <br>
-           <br> <button type="submit" class="btn btn-outline-dark ml-sm-2 mb-2" style="border-radius: 50px"
-                data-toggle="modal" data-target="#contact">&emsp;&emsp;Datos de envio&emsp;&emsp;</button>
-            </div>
-            <!--Contact Modal-->
-            <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-              aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content bg-dark">
-                  <div class="modal-header">
-                    <h5 class="modal-title text-light" id="exampleModalLabel" style="text-align: center;">Rellenar datos</h5>
-                    <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close"> <span
-                        aria-hidden="true">&times;</span> </button>
-                  </div>
-                  <div class="modal-body">
-                    <form class="form my-3 mr-2 ml-2">
-                      <div class="form-row">
-                        <div class="form-group col-sm"> <label for="exampleInputEmail1" style="color: #fff;">Direccion</label> <input type="text" class="form-control" id="exampleInputEmail1"
-                            aria-describedby="emailHelp" placeholder="Calle"> </div>
-                        <div class="form-group col-sm"> <label class="sm-lbl" for="exampleInputEmail1"
-                            style="color:rgba(0, 0, 0, 0); visibility: hidden;">Enter Name</label> <input type="text"
-                            class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder="Numero de puerta"> </div>
-                      </div>
-                      <div class="form-group"> <label for="exampleInputEmail1" style="color: #fff;">Departamento</label> <input type="email" class="form-control" id="exampleInputEmail1"
-                          aria-describedby="emailHelp" placeholder=""> </div>
-                      <div class="form-group"> <label for="exampleFormControlTextarea1" style="color: #fff;">Referencias de lugar de envio</label> <textarea class="form-control" id="exampleFormControlTextarea1"
-                          rows="2"></textarea> </div>
-                    </form>
-                  </div>
-                  <div class="modal-footer"> <button type="button" class="btn btn-outline-light ml-sm-2"
-                      style="border-radius: 50px; width:100%;" data-dismiss="modal" aria-label="Close">Enviar</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
     </div>
+
+    <!-- Creo una carta en la cual va estar el resumen de costos-->
+
     <div class="col-lg-4">
       <div class="cart-totals">
-        <h3 style="text-align: center;">Resumen de compra</h3>
-        <br>
+        <h3>Resumen</h3>
         <form accept-charset="utf-8">
           <table>
             <tbody>
               <tr>
                 <td class="tdtable">Subtotal</td>
-                <!--voy llamando los id de js para mostrar el subtotal el total etc-->
                 <td class="subtotal" id="subtotal"></td>
-
               </tr>
-
+              <tr>
+                <td class="tdtable">Envío</td>
+                <td class="free-shipping" id="envioTd"></td>
+              </tr>
               <tr class="total-row">
                 <td class="tdtable">Total</td>
                 <td class="price-total" id="total">$</td>
               </tr>
             </tbody>
           </table>
-
-          <br>
-
-          <div class="list-group">
-            <h5 style="text-align: center;">Seleccione un tipo de envío</h5>
-            <br>
-            <button type="button" class="list-group-item list-group-item-action"><i class="fas fa-truck"></i>
-              Premium (2-5 días) </button>
-
-            <button type="button" class="list-group-item list-group-item-action"><i class="fas fa-truck"></i>
-              Express (5-8 días)</button>
-
-            <button type="button" class="list-group-item list-group-item-action"><i class="fas fa-truck"></i>
-              Standard (12-15 días)</button>
-
+          <div class="list-group" id="enviosGrupo">
+            <h5 class="mt-3">Seleccione un tipo de envío</h5>
+            <button type="button" class="list-group-item list-group-item-action activo envios" id="premium"
+              name="btn-envios"> <i class="fas fa-truck" id="green"></i>
+              Premium (2-5 días)<span class="check" id="check"> <i class="far fa-check-circle"></i></span>
+            </button>
+            <button type="button" class="list-group-item list-group-item-action activo envios" id="express"
+              name="btn-envios"><i class="fas fa-truck" id="yellow"></i>
+              Express (5-8 días)<span class="check" id="check1"> <i class="far fa-check-circle"></i></span>
+            </button>
+            <button type="button" class="list-group-item list-group-item-action activo envios" id="standard"
+              name="btn-envios"><i class="fas fa-truck" id="red"></i>
+              Standard (12-15 días)<span class="check" id="check2"> <i class="far fa-check-circle"></i></span>
+            </button>
           </div>
-
+          <span id="errorEnvio" style="display: none;">Por Favor selecciona un método de envio</span>
+          <span id="cantidadError" style="display: none;"> La cantidad no puede ser menor o igual a 0 </span>
           <div class="btn-cart-totals">
-
-
-            <!--Hago que vuelva a categories si toca añadir mas productos-->
             <a href="categories.html" class="update round-black-btn" title=""> <i class="fas fa-cart-plus"></i> Añadir
-              Mas Producto</a>
-
+              Producto</a>
             <a href="#" class="checkout round-black-btn" id="pagos" title=""> <i class="fas fa-file-invoice"></i>
               Proceder al pago</a>
-
           </div>
-
       </div>
-
       </form>
-
     </div>
   </div>
   </div>
-  <!-- Aqui termina -->
+  </div>
+
+
+
+  <div class="modal fade centered" id="modal" role="dialog">
+    <div class="modal-dialog align-center">
+    </div>
+    <div class="list-group">
+      <h2 class="list-group-item list-group-item-action" id="envio" style="text-align: center;background-color: black; color: white;">Complete los datos para el envío</h2>
+    </div>
+    <form class="needs-validation list-group-item list-group-item-action " novalidate style="background-color: black; color: white;font-weight: 1000;">
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <label>Dirección</label>
+          <input type="text" class="form-control validate" id="direccion">
+          <!-- Cada imput tiene su mensaje de error si su campo esta vacio-->
+          <span id="errorDir" style="display: none;">Por favor ingrese su direcciòn</span>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label>Calle</label>
+          <input type="text" class="form-control validate" id="calle">
+          <span id="errorCalle" style="display: none;">Por favor ingrese su calle</span>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <label>Número de puerta</label>
+          <input type="text" class="form-control validate" id="numero">
+          <!-- Cada imput tiene su mensaje de error si su campo esta vacio-->
+          <span id="errorPuerta" style="display: none;">Por favor ingrese su nùmero de puerta</span>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label>Esquina</label>
+          <input type="text" class="form-control validate" id="esquina">
+          <!-- Cada imput tiene su mensaje de error si su campo esta vacio-->
+          <span id="errorEsq" style="display: none;">Por favor ingrese su esquina</span>
+        </div>
+        <div class="col-md-3 mb-3">
+          <label>Pais</label>
+          <select class="custom-select validate" id="pais">
+            <!-- Cada imput tiene su mensaje de error si su campo esta vacio-->
+            <span id="errorPais" style="display: none;">Por favor seleccione un pais</span>
+          </select>
+        </div>
+
+      <!-- Creo lista de departamentos-->
+        <div class="col-md-3 mb-3">
+          <label>Localidad</label>
+          <select class="custom-select validate" id="dep">
+            
+            <option selected disabled value="">Localidad</option>
+            <option>Artigas</option>
+            <option>Canelones</option>
+            <option>Cerro Largo</option>
+            <option>Colonia</option>
+            <option>Durazno</option>
+            <option>Flores</option>
+            <option>Florida</option>
+            <option>Lavalleja</option>
+            <option>Maldonado</option>
+            <option>Montevideo</option>
+            <option>Paysandù</option>
+            <option>Rìo Negro</option>
+            <option>Rivera</option>
+            <option>Rocha</option>
+            <option>Salto</option>
+            <option>San Josè</option>
+            <option>Soriano</option>
+            <option>Tacuarembò</option>
+            <option>Treinta y Tres</option>
+
+            <!-- Cada imput tiene su mensaje de error si su campo esta vacio-->
+            <span id="errorDep" style="display: none;">Por favor seleccione un departamento</span>
+          </select>
+        </div>
+        <div class="col-md-12 mb-3">
+          <label> Agregar datos extras</label>
+          <textarea placeholder="Casa de porton bajo al fondo...." class="form-control"></textarea>
+        </div>
+      </div>
+    </form>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>
+      <button href="#" class="btn btn-dark" id="pago">Continuar</button>
+    </div>
+  </div>
+  
+  <div class="modal fade centered" id="metodo" role="dialog">
+    <div class="modal-dialog align-center">
+    </div>
+    <div class="list-group">
+      <h2 class="list-group-item list-group-item-action" id="envio" style="background-color: black; color: white;font-weight: 1000;">Seleccione forma de pago</h2>
+    </div>
+    <div class="accordion" id="accordionExample" style="background-color: black; color: white;font-weight: 1000;">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h2 class="mb-0">
+            <button class="btn btn-link btn-block text-left types" id="opcion1" type="button" data-toggle="collapse"
+              data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <i class="fas fa-money-check-alt"></i>Tarjeta de
+              Crédito o Débito
+            </button>
+          </h2>
+        </div>
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+          
+          <form class="needs-validation list-group-item list-group-item-action formTarjeta" id="formularioTarjeta"novalidate style="background-color: black; color: white;font-weight: 1000;">
+            <div class="form-row">
+              <div class="col-md-6">
+                <label class="formLabel" style="background-color: black; color: white;font-weight: 1000;"> Nombre del titular de la tarjeta</label>
+                <input type="text" class="form-control validate" id="titular" placeholder="Nombre y apellido del titular">
+                <span id="errorTit" style="display: none;" class="spanPago">Por favor ingrese el nombre del
+                  titular</span>
+              </div>
+              <div class="col-md-6 ">
+                <label class="formLabel">Número de tarjeta</label>
+                <input type="text" class="form-control validate" id="numeroTarjeta" placeholder="Digitos de la tarjeta">
+                <span id="errorNumero" class="spanPago" style="display: none;">Por favor ingrese todos los numeros de la
+                  tarjeta</span>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-md-6">
+                <label class="formLabel">CVV</label>
+                <input type="text" class="form-control validate" id="cvv" style="width: 50%; display: initial;"
+                  > <img src="img/cvv.jpg"
+                  style="max-width: 80px; max-height: 80px; margin-top: 14px;">
+                <span id="errorCvv" class="spanPago" style="display: none;">Por favor ingrese su código de
+                  seguridad</span>
+              </div>
+              <div class="col-md-6">
+                <label class="formLabel">Vencimiento</label>
+                <select class="custom-select validate form-control" id="año" style="max-width: 25%;">
+                  <span class="spanPago" id="errorAño" style="display: none;">Por favor seleccione un año</span>
+                  <option selected disabled value="">Año</option>
+                  <option value="20">2020</option>
+                  <option value="21">2021</option>
+                  <option value="22">2022</option>
+                  <option value="23">2023</option>
+                  <option value="23">2024</option>
+                  <option value="23">2025</option>
+                  <option value="23">2026</option>
+                </select>
+                <select class="custom-select validate form-control" id="mes" style="max-width: 25%;">
+                  <option selected disabled value="">Mes</option>
+                  <option value="01">Ene (01)</option>
+                  <option value="02">Feb (02)</option>
+                  <option value="03">Mar (03)</option>
+                  <option value="04">Abr (04)</option>
+                  <option value="05">May (05)</option>
+                  <option value="06">Jun (06)</option>
+                  <option value="07">Jul (07)</option>
+                  <option value="08">Ago (08)</option>
+                  <option value="09">Sep (09)</option>
+                  <option value="10">Oct (10)</option>
+                  <option value="11">Nov (11)</option>
+                  <option value="12">Dic (12)</option>
+                  <span class="spanPago" id="errorMes" style="display: none;">Por favor seleccione un mes</span>
+                </select>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>
+      <button type="button" class="btn btn-dark" id="continue">Continuar</button>
+    </div>
+  </div>
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+
 
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
@@ -189,7 +323,7 @@
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
   <script src="index.html"></script>
-  
+  <script src="js/login.js"></script>
 
 
 </body>
