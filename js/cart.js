@@ -1,6 +1,5 @@
 const cart = "https://japdevdep.github.io/ecommerce-api/cart/654.json";
-const country = "https://raw.githubusercontent.com/millan2993/countries/master/json/countries.json";
-const mensajeExito = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
+
 fetch(cart)
   .then(response => response.json())
   .then(carrito => {
@@ -176,29 +175,6 @@ standard.addEventListener("click", () => {
 });
 
 
-fetch(country)
-  .then(response => response.json())
-  .then(paises => {
-    let listCountry = document.getElementById("pais");
-    for (let i = 0; i < paises.countries.length; i++) {
-      let pais = paises.countries[i];
-      // Creo el elemento option 
-      let opcion = document.createElement("option");
-      opcion.setAttribute("id", "option")
-      // Creo el textnode con los paises
-      let texto = document.createTextNode(pais.name);
-      //Al option le hago el append de texto
-      opcion.appendChild(texto);
-      //Al elemento con el id pais le hago el append de opcion
-      listCountry.appendChild(opcion);
-
-    }
-    //Uso una funcion de jquery, que le asigna un valor al elemento con Id pais.
-    $(document).ready(function () {
-      $("#pais").val("Uruguay");
-    });
-  })
-  .catch(err => console.log(err));
 
 let dir = document.getElementById("direccion");
 let calle = document.getElementById("calle");
